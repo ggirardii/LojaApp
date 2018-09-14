@@ -1,0 +1,70 @@
+﻿@model Modelo.Cadastros.Fabricante
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Registrando um NOVO FABRICANTE";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-header">
+            Registro de NOVO FABRICANTE
+        </div>
+        <div class="card-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="btn-group col-md-10">
+                        @Html.CheckBoxFor(model => model.EstaAtivo, "EstaAtivo") <p style="margin-top:-6px; margin-left:7px;">Fabricante Ativo</p><br />
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Estado, new { @class = "col-form-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.EstadoID, ViewBag.EstadoID as IEnumerable<SelectListItem>, "Selecione um estado", new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model.EstadoID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cidade, new { @class = "col-form-labl col-md-2" })
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.CidadeID, ViewBag.CidadeID as IEnumerable<SelectListItem>, "Selecione uma cidade", new { @class = "form-control input-sm", data_url = @Url.Action("GetCidadesDoEstado", "Cidades", new { area = "Tabelas" }) })
+                        @Html.ValidationMessageFor(model => model.CidadeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoPessoa, new { @class = "col-form-label col-md-2" })
+                    <div class="btn-group">
+                        @Html.RadioButtonFor(model => model.TipoPessoa, "Física")Física <br />
+                        @Html.RadioButtonFor(model => model.TipoPessoa, "Jurídica")Jurídica <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Adcionar" class="btn btn-success" />
+            @Html.ActionLink("Retornar", "index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}
+@section ScriptPage {
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/scripts/EstadosCidadesDropDown.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liFabricantes').addClass("active");
+        });
+    </script>
+}

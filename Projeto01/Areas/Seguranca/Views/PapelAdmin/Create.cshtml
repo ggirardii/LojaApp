@@ -1,0 +1,36 @@
+﻿@model string
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Cadastro de Roles";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-header">
+            Cadastrar uma nova Role
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label for="Papeis">Nome</label>
+                    <input id="Papeis" name="Nome" value="@Model" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Adicionar" class="btn btn-success" />
+            @Html.ActionLink("Retornar", "Index", null,new { @class="btn btn-secondary"})
+        </div>
+    </div>
+}
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liPapeis').addClass("active");
+        });
+    </script>
+}

@@ -1,0 +1,59 @@
+﻿@model Modelo.Cadastros.Fabricante
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        Visualizando detalhes de um FABRICANTE
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome)
+            <br />
+            <div class="input-group">
+                @Html.EditorFor(model => model.Nome, new { htmlattributes = new { @class = "form-control", disable = "disabled"} })
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Deletar" class= "btn btn-danger" />
+            @Html.ActionLink("Retornar","Index", null, new { @class = "btn btn-secondary"})
+        }
+    </div>
+</div>
+@*--------MODAL ERRO DEELTAR*@
+<div class="modal fade" aria-hidden="true" id="modalErro" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Não foi possível deletear a categoria @Model.Nome</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>@TempData["Message"]</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Areas/Cadastros/Views/Fabricantes/_PorFabricante.cshtml", Model.Produtos.ToList())
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liFabricantes').addClass("active");
+            var modal = @((TempData["Message"] != null).ToString().ToLower());
+            if (modal == true){
+                $('#modalErro').modal('show');
+            }
+        });
+    </script>
+    }

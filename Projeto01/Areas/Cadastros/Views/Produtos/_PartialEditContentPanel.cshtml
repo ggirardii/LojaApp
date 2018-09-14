@@ -1,0 +1,100 @@
+﻿@model Modelo.Cadastros.Produto
+
+@if (ViewData.ModelState.Keys.Any(k => ViewData.ModelState[k].Errors.Count() > 0))
+{
+    <div class="alert alert-danger alert-dismissible">
+        @Html.ValidationSummary(false, "Verifique os seguintes erros", new { @class = "text-danger" })
+    </div>
+}
+
+@Html.HiddenFor(model => model.ProdutoID)
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, "Nome", new { @class = "col-form-label col-md-5" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoriaID, "Categoria", new { @class = "col-form-label col-md-5" })
+            <div class="col-md-12">
+                @Html.DropDownList("CategoriaID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoriaID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FabricanteID, "Fabricante", new { @class = "col-form-label col-md-5" })
+            <div class="col-md-12">
+                @Html.DropDownList("FabricanteID", null, htmlAttributes: new { @class = "form-control", @name = "" })
+                @Html.ValidationMessageFor(model => model.FabricanteID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValorUnitario, "Valor Unitário", new { @class = "col-form-label col-md-5" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.ValorUnitario, new { htmlAttributes = new { @class = "form-control", @id = "preco" } })
+                @Html.ValidationMessageFor(model => model.ValorUnitario, "", new { @class = "text-danger" })
+            </div>
+        </div><div class="form-group">
+            @Html.LabelFor(model => model.DataCadastro, new { @class = "col-form-label col-md-5" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control", id = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.DataCadastro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-md-4" style="align-self:center;">
+        <div class="card">
+
+            <div class="form-group">
+                @if (Model != null)
+                {
+                    if (Model.Logotipo == null)
+                    {
+                        <div class="form-control-plaintext text-light text-center bg-secondary">
+                            Nenhuma imagem adicionada
+                        </div>
+                        <div class="panel-footer">
+                            <label class="botaoUpImg btn btn-primary btn-sm" style="margin-top:10px;" for="logotipoAdd">Adicionar Imagem</label>
+                            <input type="file" name="files" id="logotipoAdd" class="inputUpImg" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <img id="imagemUpload" class="img-thumbnail" src="@Url.Action("GetLogotipo", "Produtos", new { id = Model.ProdutoID })" />
+                        </div>
+                        <div class="panel-footer">
+                            <div class="form-check-inline">
+                                <label>
+                                    Remover Imagem
+                                    <input type="checkbox" name="chkRemoverImagem" value="Sim" />
+                                </label>
+                            </div>
+                            <div>
+                                @Html.ActionLink("Download da Imagem", "DownloadArquivo", "Produtos", new { area = "Cadastros", id = Model.ProdutoID }, null)
+                            </div>
+                            <div>
+                                <label for="logotipoTrocar" class="botaoUpImg btn btn-secondary btn-sm" style="margin-top:10px;">Trocar Imagem</label>
+                                <input type="file" name="files" id="logotipoTrocar" class="inputUpImg" />
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="form-control-plaintext text-light text-center bg-secondary">
+                        Nenhuma imagem adicionada
+                    </div>
+                        <div class="panel-footer">
+                            <label class="botaoUpImg btn btn-primary btn-sm" style="margin-top:10px;" for="logotipoAdd">Adicionar Imagem</label>
+                            <input type="file" name="files" id="logotipoAdd" class="inputUpImg" />
+                        </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

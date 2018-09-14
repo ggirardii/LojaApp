@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>General</title>
+</head>
+<body>
+    <div>
+        <h1>500</h1>
+        <h2>Erro Interno</h2>
+        <p>
+            Infelizmente um erro interno ocorreu. Por Favor, tente novamente mais tarde
+            <br />
+            <br />
+            @HttpContext.Current.Session["ErrorException"].ToString().Substring(0, 400)
+        </p>
+        <p>
+            <a href="@Url.Action("Index","Home")">Retornar para a Home</a>
+        </p>
+    </div>
+</body>
+</html>

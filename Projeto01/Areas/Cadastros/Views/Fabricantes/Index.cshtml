@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Modelo.Cadastros.Fabricante>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Listagem de FABRICANTES";
+}
+
+@{ 
+    if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Message"]
+        </div>
+    }
+}
+
+
+<div class="card">
+    <div class="card-header">
+        Relação de FABRICANTES registrados
+    </div>
+    <div class="card-body">
+        <table id="table" class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark" align="center">
+                <tr >
+                    <th>
+                        @Html.DisplayNameFor(model => model.FabricanteID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="10%" align="center">
+                            @Html.DisplayFor(modelItem => item.FabricanteID)
+                        </td>
+                        <td width="75%">
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td width="15%" align="center">
+                            <a class="remove-underline" href="@Url.Action("Edit",new { id = item.FabricanteID})"><i class="ti-pencil text-dark btn-icon"></i></a>|
+                            <a class="remove-underline" href="@Url.Action("Details", new { id = item.FabricanteID})"><i class="ti-eye text-dark btn-icon"></i></a>|
+                            <a class="remove-underline" href="@Url.Action("Delete", new { id = item.FabricanteID})"><i class="ti-trash text-dark btn-icon"></i></a>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Adicionar","Create", null, new { @class = "btn btn-primary"})
+    </div>
+</div>
+
+@section Styles{
+    <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
+    }
+@section ScriptPage {
+    <script src="~/scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.js"></script>
+   <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liFabricantes').addClass("active");
+        });
+    </script>
+    
+    }
+
+

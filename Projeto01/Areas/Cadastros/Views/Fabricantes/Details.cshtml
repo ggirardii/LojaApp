@@ -1,0 +1,28 @@
+﻿@model Modelo.Cadastros.Fabricante
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Visualização de detalhes de um FABRICANTE";
+}
+
+<div class="card">
+    <div class="card-header">
+        Visualizando detalhes de um FABRICANTE
+    </div>
+    <div class="card-body">
+        @Html.Partial("~/Areas/Cadastros/Views/Fabricantes/_PartialDetailsContentPanel.cshtml", Model)
+    </div>
+    <div class="panel-footer">
+       @Html.ActionLink("Retornar","Index", null, new { @class = "btn btn-secondary"})
+    </div>
+</div>
+@Html.Partial("~/Areas/Cadastros/Views/Fabricantes/_PorFabricante.cshtml", Model.Produtos.ToList())
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liFabricantes').addClass("active");
+        });
+    </script>
+    }
+

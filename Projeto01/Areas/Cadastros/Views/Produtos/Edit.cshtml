@@ -1,0 +1,52 @@
+﻿@model Modelo.Cadastros.Produto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Edição de Produtos";
+}
+
+@using (Html.BeginForm("Edit","Produtos", FormMethod.Post, new { enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-header">
+            Alterar dados do Produto
+        </div>
+        <div class="card-body">
+            @Html.Partial("~/Areas/Cadastros/Views/Produtos/_PartialEditContentPanel.cshtml", Model)
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Salvar" class="btn btn-success"/>
+            @Html.ActionLink("Retornar", "Index",null, new {@class = "btn btn-secondary"})
+        </div>
+    </div>
+}
+@section Styles {
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/core.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/theme.css" rel="stylesheet" />
+    }
+
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liProdutos').addClass("active");
+            $('#datepicker').datepicker($.datepicker.regional["pt-BR"]);
+        });
+        $('input[type=file]').change(function () {
+            var $fileName = document.getElementsByClassName("inputUpImg")[0].value.split('\\').pop();
+            if ($fileName == "") {
+                $('.botaoUpImg').text('Trocar Imagem');
+            }
+            else {
+                $('.botaoUpImg').text($fileName);
+            }
+            
+            
+        });
+    </script>
+  }  
+
+

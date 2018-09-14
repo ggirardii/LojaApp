@@ -1,0 +1,74 @@
+﻿@model Modelo.Cadastros.Produto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Deletando Produto";
+}
+<div class="card">
+    <div class="card-header">
+        Produto a ser REMOVIDO
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, "Nome", new { @class = "col-form-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Categoria.Nome, "Categoria", new { @class = "col-form-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Categoria.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fabricante.Nome, "Fabricante", new { @class = "col-form-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Fabricante.Nome, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a href="#" id="btnDelete" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal">Remover</a>
+        @Html.ActionLink("Retornar", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+@*----------------------MODAL DELETE-------------------------*@
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirmação de exclusão</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Você está pretes a remover o produto @Model.Nome.ToUpper() do cadastro</p>
+                <p><strong>Você realmente deseja excluir?</strong></p>
+                @using (Html.BeginForm("Delete", "Produtos", FormMethod.Post, new { @id = "delete-form", role = "form" }))
+                {
+                    @Html.HiddenFor(m => m.ProdutoID)
+                    @Html.AntiForgeryToken()
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="$('#delete-form').submit();">
+                    Sim
+                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Não
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liProdutos').addClass("active");
+        });
+    </script>
+}

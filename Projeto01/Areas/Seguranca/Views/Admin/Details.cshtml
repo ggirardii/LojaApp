@@ -1,0 +1,35 @@
+﻿@model Modelo.Autenticacao.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Detalhes do Usuário";
+}
+
+<div class="card">
+    <div class="card-header">
+        Detalhes do Usuario
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, new { @class = "col-form-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, new { @class = "col-form-label col-md-2"})
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new {@class = "form-control", disabled = "disabled"}})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "col-form-label col-md-2"})
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new {@class = "form-control", disabled = "disabled"}})
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Editar", "Edit", new { @Id = Model.Id}, new { @class = "btn btn-primary"})
+        @Html.ActionLink("Retornar", "Index", null, new { @class = "btn btn-secondary"})
+    </div>
+</div>

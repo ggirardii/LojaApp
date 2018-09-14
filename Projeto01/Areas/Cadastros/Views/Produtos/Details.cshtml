@@ -1,0 +1,26 @@
+﻿@model Modelo.Cadastros.Produto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Detalhes do Produto";
+}
+<div class="card">
+    <div class="card-header">
+        Detalhes do Produto
+    </div>
+    <div class="card-body">
+        @Html.Partial("~/Areas/Cadastros/Views/Produtos/_PartialDetailsContentPanel.cshtml", Model)
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.ProdutoID }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Retornar", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liProdutos').addClass("active");
+        });
+    </script>
+    }

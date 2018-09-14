@@ -1,0 +1,95 @@
+﻿@model Projeto01.Areas.Seguranca.Models.UsuarioEditViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Editar um Usuário";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-header">
+            Alterando o usuário @Html.DisplayFor(model => model.Nome)
+        </div>
+        <div class="card-body">
+            @if (ViewData.ModelState.Keys.Any(k => ViewData.ModelState[k].Errors.Count() > 0))
+            {
+                <div class="alert alert-danger alert-dismissible">
+                    @Html.ValidationSummary(false, "Verfique os seguintes erros:")
+                </div>
+            }
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id, new { @class = "col-form-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, new { @class = "col-form-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "col-form-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Senha, new { @class = "col-form-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.PasswordFor(model => model.Senha, new { @class = "form-control", @id = "senha" })
+                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CompararSenha, "Confirmar Senha", new { @class = "col-form-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.PasswordFor(model => model.CompararSenha, new { @class = "form-control", @id = "compararSenha" })
+                    @Html.ValidationMessageFor(model => model.CompararSenha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div id="validarComparacao">
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input id="btnSalvar" type="submit" value="Salvar" class="btn btn-success" />
+            @Html.ActionLink("Retornar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liUsuarios').addClass("active");
+        });
+        $(document).on("change", function () {
+            $("#compararSenha").keyup(validate);
+        });
+        $(document).on("change", function () {
+            $("#senha").keyup(validate);
+        });
+
+        function validate() {
+            var password1 = $("#senha").val();
+            var password2 = $("#compararSenha").val();
+
+            if (password1 != password2) {
+                $("#validarComparacao").addClass("alert alert-danger");
+                $("#validarComparacao").text("A senha não confere.");
+                $('#btnSalvar').attr('disabled', 'disabled');
+            }
+            else {
+                $("#validarComparacao").removeClass("alert alert-danger");
+                $("#validarComparacao").text("");
+                $('#btnSalvar').removeAttr('disabled');
+
+            }
+        }
+    </script>
+}

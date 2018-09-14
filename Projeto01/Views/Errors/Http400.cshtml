@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>General</title>
+</head>
+<body>
+    <div>
+        <h1>400</h1>
+        <h2>Erro de Solicitação</h2>
+        <p>
+            Infelizmente um erro durante a solicitação. Por Favor, tente novamente.
+            <br />
+            <br />
+            @HttpContext.Current.Session["ErrorException"].ToString().Substring(0, 400)
+        </p>
+        <p>
+            <a href="@Url.Action("Index","Home")">Retornar para a Home</a>
+        </p>
+    </div>
+</body>
+</html>

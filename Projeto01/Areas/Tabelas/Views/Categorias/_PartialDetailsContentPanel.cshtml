@@ -1,0 +1,13 @@
+﻿@model Modelo.Tabelas.Categoria
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Nome)
+    <div class="input-group">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" value="@Html.ValueFor(model => model.Nome)" disabled>
+            <div class="input-group-append">
+                <a href="@Url.Action("Edit", new { id = Model.CategoriaID})" class="btn btn-outline-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>

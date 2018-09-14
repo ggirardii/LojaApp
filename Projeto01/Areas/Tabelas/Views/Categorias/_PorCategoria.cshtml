@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Modelo.Cadastros.Produto>
+
+<div class="card">
+    <div class="card-header">
+        Relação de produtos por Categoria
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th width="15%">
+                        @Html.DisplayNameFor(model => model.ProdutoID)
+                    </th>
+                    <th width="65%">
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th width="20%">
+                        @Html.DisplayNameFor(model => model.Fabricante)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.ProdutoID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Fabricante.Nome)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+
+    </div>
+</div>

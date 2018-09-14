@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Modelo.Tabelas.Categoria>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Listagem de Categorias";
+
+}
+
+@{ 
+    if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Message"]
+        </div>
+    }
+}
+
+<div class="card">
+    <div class="card-header">
+        Relação de CATEGORIAS registrados
+    </div>
+    <div class="card-body">
+        <table id="table" class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark" align="center"> 
+                <tr>
+                    <th width="10%">
+                        @Html.DisplayNameFor(model => model.CategoriaID)
+                    </th>
+                    <th width="75%">
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th width="15%">
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.CategoriaID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td align="center">
+                            <a class="remove-underline" href="@Url.Action("Edit", new { id = item.CategoriaID })"><i class="ti-pencil text-dark btn-icon"></i></a> |
+                            <a class="remove-underline" href="@Url.Action("Details", new { id = item.CategoriaID })"><i class="ti-eye text-dark btn-icon"></i></a> |
+                            <a class="remove-underline" href="@Url.Action("Delete", new { id = item.CategoriaID })"><i class="ti-trash text-dark btn-icon"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+@section Styles{
+    <link href="@Url.Content("~/content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
+}
+@section ScriptPage {
+    <script src="~/scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="~/scripts/DataTables/dataTables.bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liCategorias').addClass("active");
+        });
+    </script>
+}
+
+

@@ -1,0 +1,80 @@
+﻿@using Persistencia.DAL.Usuarios
+@using Modelo.Autenticacao
+@model IEnumerable<Papel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Listagem de papéis registrados";
+}
+
+<div class="card">
+    <div class="card-header">
+        Papéis
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Nomes
+                    </th>
+                    <th>
+                        Usuários
+                    </th>
+                    <th style="text-align:center;">
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="4">
+                            Sem papéis registrados
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach(Papel role in Model)
+                    {
+                        <tr>
+                            <td>@role.Id</td>
+                            <td>@role.Name</td>
+                            <td>
+                                @if (role.Users == null || role.Users.Count == 0)
+                                {
+                                    @: Sem usuários no papel
+                                }
+                                else
+                                {
+                                    <p>
+                                        @string.Join(", ",role.Users.Select(x => Html.GetUserName(x.UserId)))
+                                    </p>
+                                }
+                            </td>
+                            <td align="center">
+                                <a class="remove-underline" href="@Url.Action("Edit",new { @id = role.Id})"><i class="ti-pencil text-dark btn-icon"></i></a>|
+                                <a class="remove-underline" href="@Url.Action("Delete", new { @id = role.Id})"><i class="ti-trash text-dark btn-icon"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Criar um novo Papel","Create", null, new { @class = "btn btn-primary"})
+    </div>
+</div>
+@section ScriptPage{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liPapeis').addClass("active");
+        });
+    </script>
+    }

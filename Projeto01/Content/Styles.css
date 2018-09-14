@@ -1,0 +1,80 @@
+﻿.main {
+    padding: 0px 15px 0px 15px !important;
+}
+
+div#LoginRow {
+   text-align:right;
+    margin: 10px 0px 10px 0px;
+}
+
+div#imagemUpload {
+    display:block;
+    margin: 0 auto;
+}
+
+.page-header {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+div.panel-footer {
+    margin: 0px 20px 20px 20px !important;
+}
+
+.btn-icon {
+    margin-top: 10px !important;
+    padding: 5px 5px 5px 5px !important;
+}
+
+.btn-icon:hover {
+    color: #007bff !important;
+}
+
+.remove-underline,
+.remove-underline:hover,
+.remove-underline:active {
+    text-decoration: none !important;
+}
+
+.card-header {
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+.card {
+    margin-bottom: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-indicators li{
+    background-color:grey;
+}
+
+.carousel-indicators .active {
+    background-color:black;
+}
+
+.d-block{
+    margin:0 auto;
+}
+
+input[type='file']{
+    display:none;
+}
+

@@ -11,3 +11,19 @@ C:\Users\80047\documents\visual studio 2015\Projects\Projeto01\Modelo\bin\Debug\
 C:\Users\80047\documents\visual studio 2015\Projects\Projeto01\Modelo\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\80047\documents\visual studio 2015\Projects\Projeto01\Modelo\obj\Debug\Modelo.dll
 C:\Users\80047\documents\visual studio 2015\Projects\Projeto01\Modelo\obj\Debug\Modelo.pdb
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\Modelo.dll.config
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\Modelo.dll
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\Modelo.pdb
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\EntityFramework.dll
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\EntityFramework.xml
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\obj\Debug\Modelo.csprojAssemblyReference.cache
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\obj\Debug\Modelo.csproj.CoreCompileInputs.cache
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\obj\Debug\Modelo.csproj.CopyComplete
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\obj\Debug\Modelo.dll
+C:\Users\ggira\Documents\GitHub\LojaApp\Modelo\obj\Debug\Modelo.pdb

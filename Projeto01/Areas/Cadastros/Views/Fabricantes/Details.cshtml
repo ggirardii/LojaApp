@@ -17,12 +17,5 @@
     </div>
 </div>
 @Html.Partial("~/Areas/Cadastros/Views/Fabricantes/_PorFabricante.cshtml", Model.Produtos.ToList())
-@section ScriptPage{
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('li').removeClass("active");
-            $('#liFabricantes').addClass("active");
-        });
-    </script>
-    }
+
 

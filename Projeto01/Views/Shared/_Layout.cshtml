@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="col-xs-2 col-md-2 bg-light" style="padding-top:15px">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="nav flex-column nav-pills" id="Menu" role="tablist" aria-orientation="vertical">
                     <a id="liPaginaInicial" class="nav-link" href="@Url.RouteUrl("Default", new { controller = "PaginaInicial", action = "Index"})">Home</a>
                     <a id="liCarrinho" class="nav-link" href="@Url.RouteUrl("Carrinho_default", new { controller = "Carrinhos", action = "Create"})">Carrinho</a>
                     <a id="liCategorias" class="nav-link" href="@Url.RouteUrl("Tabelas_default", new { controller = "Categorias", action = "Index"})">Categorias</a>
@@ -53,11 +53,12 @@
         </div>
     </div>
 
-    <script src="~/scripts/jquery-3.3.1.js"></script>
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
     <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/scripts/jquery-ui-1.12.1.js"></script>
-    <script src="~/scripts/bootstrap.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
     <script src="~/scripts/ui.datapicker-pt-BR.js"></script>
+    <script src="~/scripts/MenuBotoes.js"></script>
 
     @RenderSection("ScriptPage", false)
 </body>

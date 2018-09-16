@@ -37,13 +37,7 @@
 @Html.Partial("~/Areas/Tabelas/Views/Categorias/_PorCategoria.cshtml", Model.Produtos.ToList())
 
 @section ScriptPage {
-    <script src="~/scripts/jquery.validate.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
-<script type="text/javascript">
-        $(document).ready(function () {
-            $('li').removeClass("active");
-            $('#liCategorias').addClass("active");
-        });
-</script>
-}
+
 

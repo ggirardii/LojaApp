@@ -56,8 +56,6 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('li').removeClass("active");
-            $('#liCategorias').addClass("active");
             var modal = @((TempData["Message"] != null).ToString().ToLower());
             if (modal == true){
                 $('#modalErro').modal('show')
